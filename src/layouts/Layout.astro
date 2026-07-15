@@ -1,0 +1,97 @@
+---
+import '../styles/global.css';
+import logoMark from '../assets/logo-mark.png';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+const email = 'info@archascode.com';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta property="og:site_name" content="ArchAsCode" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={ogImage} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+	</head>
+	<body class="min-h-screen bg-[#0a0a12] font-sans text-zinc-300 antialiased">
+		<div
+			class="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_at_top,rgb(79_70_229/0.18),transparent_60%)]"
+		>
+		</div>
+
+		<header class="sticky top-0 z-50 border-b border-white/5 bg-[#0a0a12]/80 backdrop-blur">
+			<nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+				<a href="/" class="flex items-center gap-2.5">
+					<img src={logoMark.src} alt="" class="h-7 w-auto" />
+					<span class="text-lg font-semibold tracking-tight text-white"
+						>Arch<span class="text-indigo-400">As</span>Code</span
+					>
+				</a>
+				<div class="flex items-center gap-6 text-sm">
+					<a href="/#product" class="hidden text-zinc-400 transition hover:text-white sm:block">Product</a>
+					<a href="/#approach" class="hidden text-zinc-400 transition hover:text-white sm:block">Approach</a>
+					<a href="/about" class="hidden text-zinc-400 transition hover:text-white sm:block">About</a>
+					<a
+						href={`mailto:${email}`}
+						class="rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white transition hover:bg-indigo-500"
+						>Get in touch</a
+					>
+				</div>
+			</nav>
+		</header>
+
+		<slot />
+
+		<footer class="border-t border-white/5">
+			<div class="mx-auto max-w-6xl px-6 py-12">
+				<div class="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+					<div>
+						<a href="/" class="flex items-center gap-2.5">
+							<img src={logoMark.src} alt="" class="h-6 w-auto" />
+							<span class="font-semibold tracking-tight text-white"
+								>Arch<span class="text-indigo-400">As</span>Code</span
+							>
+						</a>
+						<p class="mt-3 max-w-xs text-sm text-zinc-500">
+							Architecture as the source of truth for AI-native software engineering.
+						</p>
+					</div>
+					<div class="flex gap-16 text-sm">
+						<div class="flex flex-col gap-2">
+							<span class="font-medium text-zinc-200">Site</span>
+							<a href="/#product" class="text-zinc-500 transition hover:text-white">Product</a>
+							<a href="/#approach" class="text-zinc-500 transition hover:text-white">Approach</a>
+							<a href="/about" class="text-zinc-500 transition hover:text-white">About</a>
+						</div>
+						<div class="flex flex-col gap-2">
+							<span class="font-medium text-zinc-200">Contact</span>
+							<a href={`mailto:${email}`} class="text-zinc-500 transition hover:text-white">{email}</a>
+						</div>
+					</div>
+				</div>
+				<p class="mt-10 text-xs text-zinc-600">© 2026 ArchAsCode. All rights reserved.</p>
+			</div>
+		</footer>
+	</body>
+</html>

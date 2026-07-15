@@ -1,17 +1,237 @@
 ---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import screenshot from '../assets/product-screenshot.png';
 
+const email = 'info@archascode.com';
+
+const principles = [
+	{
+		title: 'The spec is the source of truth',
+		body: 'A schema-validated architecture.yml — versioned, reviewed, diffed like code. The application is derived from the spec, not the other way around.',
+	},
+	{
+		title: 'Deterministic by default',
+		body: 'Structure, persistence, and APIs come from a code generator, not from sampling a model. Same spec in, same system out — every time.',
+	},
+	{
+		title: 'AI, with bounded degrees of freedom',
+		body: 'AI writes code exactly where judgment is needed: domain logic declared in the spec as natural-language workflows. Everything around it is generated.',
+	},
+	{
+		title: 'Regenerate, don’t excavate',
+		body: 'Hand-authored bodies are locked and preserved across rebuilds. Evolve the spec, re-render the system, keep the parts that matter.',
+	},
+];
+
+const problems = [
+	{
+		title: 'Speed without trust',
+		body: 'AI-assisted code arrives faster than teams can review it. Small inconsistencies compound into systems nobody fully understands.',
+	},
+	{
+		title: 'Specs that drift',
+		body: 'Most spec-driven workflows treat the spec as a fancy prompt. By day two, the document and the code have quietly parted ways.',
+	},
+	{
+		title: 'Unrepeatable builds',
+		body: 'The same prompt never produces the same system twice. Regeneration becomes roulette, so nobody dares to regenerate.',
+	},
+];
+
+const features = [
+	{
+		title: 'See the architecture',
+		body: 'A VS Code plugin renders the spec as an interactive graph — domain, application, adapter, and API layers. Trace any endpoint to the use case, port, and adapter behind it.',
+	},
+	{
+		title: 'Edit the spec in place',
+		body: 'Selection-driven editors write changes back to architecture.yml. The spec stays the single artifact your team reviews.',
+	},
+	{
+		title: 'Render a running system',
+		body: 'The CLI and render engine turn the spec into a working REST API — including planned, previewable database schema migrations.',
+	},
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+	title="ArchAsCode — Architecture as the source of truth"
+	description="ArchAsCode compiles a schema-validated architecture.yml into a running application: deterministic code generation, with AI handling exactly the parts that need judgment."
+>
+	<main class="relative">
+		<!-- Hero -->
+		<section class="mx-auto max-w-6xl px-6 pt-20 pb-16 sm:pt-28">
+			<div class="grid items-center gap-12 lg:grid-cols-2">
+				<div>
+					<p class="text-sm font-semibold tracking-widest text-indigo-400 uppercase">
+						AI-native software engineering
+					</p>
+					<h1 class="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+						Architecture as the <span
+							class="bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent"
+							>source of truth</span
+						>
+					</h1>
+					<p class="mt-6 text-lg leading-relaxed text-zinc-400">
+						ArchAsCode compiles a schema-validated <code
+							class="rounded bg-white/5 px-1.5 py-0.5 font-mono text-base text-zinc-200"
+							>architecture.yml</code
+						> into a running application — deterministic code generation, with AI handling exactly
+						the parts that need judgment.
+					</p>
+					<div class="mt-8 flex flex-wrap gap-4">
+						<a
+							href={`mailto:${email}`}
+							class="rounded-lg bg-indigo-600 px-5 py-3 font-medium text-white transition hover:bg-indigo-500"
+							>Get in touch</a
+						>
+						<a
+							href="#product"
+							class="rounded-lg border border-white/10 px-5 py-3 font-medium text-zinc-300 transition hover:border-white/25 hover:text-white"
+							>See what we&rsquo;re building</a
+						>
+					</div>
+				</div>
+
+				<!-- Spec card -->
+				<div class="rounded-xl border border-white/10 bg-[#0d0d1a] shadow-2xl shadow-indigo-950/40">
+					<div class="flex items-center gap-2 border-b border-white/5 px-4 py-3">
+						<span class="size-3 rounded-full bg-zinc-700"></span>
+						<span class="size-3 rounded-full bg-zinc-700"></span>
+						<span class="size-3 rounded-full bg-zinc-700"></span>
+						<span class="ml-3 font-mono text-xs text-zinc-500">spec/architecture.yml</span>
+					</div>
+					<pre
+						class="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-zinc-400"><code><span class="text-sky-300">domain</span>:
+  <span class="text-sky-300">entities</span>:
+    <span class="text-indigo-300">Order</span>:
+      <span class="text-sky-300">attributes</span>:
+        <span class="text-zinc-300">order_date</span>: <span class="text-emerald-300">date</span>
+        <span class="text-zinc-300">total</span>: <span class="text-emerald-300">Money</span>
+      <span class="text-sky-300">relationships</span>:
+        <span class="text-zinc-300">customer</span>: <span class="text-emerald-300">many-to-one</span>
+      <span class="text-sky-300">methods</span>:
+        <span class="text-indigo-300">calculate_total</span>:
+          <span class="text-zinc-300">returns</span>: <span class="text-emerald-300">float</span>
+          <span class="text-zinc-300">workflow</span>: <span class="text-amber-200/80">&gt;
+            For each related OrderLineItem,
+            sum quantity &times; unit_price.</span></code></pre>
+				</div>
+			</div>
+
+			<!-- Terminal strip -->
+			<div
+				class="mt-16 rounded-xl border border-white/10 bg-[#0d0d1a] p-5 font-mono text-sm leading-relaxed"
+			>
+				<p class="text-zinc-500"><span class="text-zinc-600">$</span> rm -rf src/</p>
+				<p class="text-zinc-300"><span class="text-zinc-600">$</span> archascode render spec/architecture.yml</p>
+				<p class="text-emerald-400">&#10003; application rebuilt from spec &mdash; same system, every time</p>
+			</div>
+		</section>
+
+		<!-- Problem -->
+		<section class="border-t border-white/5">
+			<div class="mx-auto max-w-6xl px-6 py-20">
+				<h2 class="max-w-2xl text-3xl font-bold tracking-tight text-white">
+					AI made coding fast. It didn&rsquo;t make systems dependable.
+				</h2>
+				<div class="mt-10 grid gap-8 sm:grid-cols-3">
+					{
+						problems.map((p) => (
+							<div>
+								<h3 class="font-semibold text-zinc-100">{p.title}</h3>
+								<p class="mt-2 text-sm leading-relaxed text-zinc-400">{p.body}</p>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- Approach -->
+		<section id="approach" class="scroll-mt-16 border-t border-white/5">
+			<div class="mx-auto max-w-6xl px-6 py-20">
+				<p class="text-sm font-semibold tracking-widest text-indigo-400 uppercase">The approach</p>
+				<h2 class="mt-3 max-w-2xl text-3xl font-bold tracking-tight text-white">
+					Give the deterministic parts to a generator. Give the judgment to AI.
+				</h2>
+				<div class="mt-10 grid gap-6 sm:grid-cols-2">
+					{
+						principles.map((p) => (
+							<div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+								<h3 class="font-semibold text-white">{p.title}</h3>
+								<p class="mt-2 text-sm leading-relaxed text-zinc-400">{p.body}</p>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- Product -->
+		<section id="product" class="scroll-mt-16 border-t border-white/5">
+			<div class="mx-auto max-w-6xl px-6 py-20">
+				<p class="text-sm font-semibold tracking-widest text-indigo-400 uppercase">The product</p>
+				<h2 class="mt-3 max-w-2xl text-3xl font-bold tracking-tight text-white">
+					Your architecture, as a living, editable system
+				</h2>
+				<p class="mt-4 max-w-2xl leading-relaxed text-zinc-400">
+					ArchAsCode is a VS Code plugin, CLI, and render engine built around one artifact. Below:
+					the interactive architecture graph, with an entity method declared as a natural-language
+					workflow — the exact seam where AI takes over.
+				</p>
+				<div class="mt-10 overflow-hidden rounded-xl border border-white/10 shadow-2xl shadow-indigo-950/40">
+					<Image
+						src={screenshot}
+						alt="ArchAsCode VS Code plugin showing a domain-entity graph and an entity-method editor with a natural-language workflow"
+						class="w-full"
+						widths={[640, 1024, 1261]}
+						sizes="(max-width: 1152px) 100vw, 1152px"
+					/>
+				</div>
+				<p class="mt-3 text-center text-xs text-zinc-600">
+					The domain layer of an order-management spec, rendered and edited in place.
+				</p>
+				<div class="mt-12 grid gap-8 sm:grid-cols-3">
+					{
+						features.map((f) => (
+							<div>
+								<h3 class="font-semibold text-zinc-100">{f.title}</h3>
+								<p class="mt-2 text-sm leading-relaxed text-zinc-400">{f.body}</p>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- Conference -->
+		<section class="border-t border-white/5">
+			<div class="mx-auto max-w-6xl px-6 py-20">
+				<div
+					class="rounded-2xl border border-indigo-500/20 bg-gradient-to-br from-indigo-950/40 to-[#0d0d1a] p-8 sm:p-12"
+				>
+					<p class="text-sm font-semibold tracking-widest text-indigo-400 uppercase">
+						Applied AI Conference &middot; July 2026
+					</p>
+					<h2 class="mt-3 text-3xl font-bold tracking-tight text-white">
+						Lessons in Taming AI Chaos
+					</h2>
+					<p class="mt-4 max-w-2xl leading-relaxed text-zinc-400">
+						The story behind ArchAsCode: four chapters of spec-driven development experiments that
+						ended with the flip — deleting <code class="font-mono text-zinc-300">/src</code> and
+						rebuilding the running application from <code class="font-mono text-zinc-300"
+							>architecture.yml</code
+						>, reliably.
+					</p>
+					<a
+						href={`mailto:${email}?subject=Saw%20the%20talk%20at%20Applied%20AI`}
+						class="mt-8 inline-block rounded-lg bg-indigo-600 px-5 py-3 font-medium text-white transition hover:bg-indigo-500"
+						>Saw the talk? Let&rsquo;s talk</a
+					>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

@@ -1,17 +1,18 @@
 ---
+import Layout from '../layouts/Layout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>404 — Page not found</title>
-	</head>
-	<body>
-		<h1>404 — Page not found</h1>
-		<p><a href="/">Back to home</a></p>
-	</body>
-</html>
+<Layout title="404 — ArchAsCode" description="Page not found.">
+	<main class="relative">
+		<section class="mx-auto max-w-3xl px-6 py-32 text-center">
+			<p class="font-mono text-sm text-indigo-400">404</p>
+			<h1 class="mt-4 text-4xl font-bold tracking-tight text-white">Page not found</h1>
+			<p class="mt-4 text-zinc-400">This route isn&rsquo;t in the spec.</p>
+			<a
+				href="/"
+				class="mt-8 inline-block rounded-lg bg-indigo-600 px-5 py-3 font-medium text-white transition hover:bg-indigo-500"
+				>Back to home</a
+			>
+		</section>
+	</main>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const email = 'info@archascode.com';
+---
+
+<Layout
+	title="About — ArchAsCode"
+	description="ArchAsCode is building the next generation of software engineering tools: architecture and executable specifications as first-class artifacts in AI-native delivery."
+>
+	<main class="relative">
+		<section class="mx-auto max-w-3xl px-6 pt-20 pb-24 sm:pt-28">
+			<p class="text-sm font-semibold tracking-widest text-indigo-400 uppercase">About</p>
+			<h1 class="mt-4 text-4xl font-bold tracking-tight text-white">
+				Building the tools we kept wishing existed
+			</h1>
+
+			<div class="mt-8 space-y-6 leading-relaxed text-zinc-400">
+				<p>
+					ArchAsCode was founded by <span class="text-zinc-200">Steve Fox</span>, a software
+					architect focused on modern software engineering, AI-native architecture, and building
+					practical systems that scale.
+				</p>
+				<p>
+					The company grew out of a simple observation, repeated across several projects: AI makes
+					writing code dramatically faster, but without an architecture that machines can read,
+					validate, and regenerate from, that speed turns into drift. The answer wasn&rsquo;t more
+					prompting — it was making the specification itself the source of truth, and giving the
+					deterministic parts of software delivery back to deterministic tools.
+				</p>
+				<p>
+					ArchAsCode is an ongoing effort to build that next generation of software engineering
+					tools and practices: executable architecture, specification-driven development, and AI
+					with clearly bounded degrees of freedom.
+				</p>
+			</div>
+
+			<div class="mt-12 rounded-xl border border-white/10 bg-white/[0.02] p-6">
+				<h2 class="font-semibold text-white">Advisory</h2>
+				<p class="mt-2 text-sm leading-relaxed text-zinc-400">
+					The long-term focus is product. Along the way, ArchAsCode selectively partners with
+					organizations solving difficult AI architecture and engineering challenges.
+				</p>
+				<a
+					href={`mailto:${email}?subject=Architecture%20challenge`}
+					class="mt-4 inline-block text-sm font-medium text-indigo-400 transition hover:text-indigo-300"
+					>Contact us about your architecture or platform challenges &rarr;</a
+				>
+			</div>
+		</section>
+	</main>
+</Layout>
