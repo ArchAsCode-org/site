@@ -8,7 +8,7 @@ const email = 'info@archascode.com';
 const principles = [
 	{
 		title: 'The spec is the source of truth',
-		body: 'A schema-validated architecture.yml — versioned, reviewed, diffed like code. The application is derived from the spec, not the other way around.',
+		body: 'A schema-validated architecture.yml — versioned, reviewed, diffed like code. The application is derived from the spec, deterministically.',
 	},
 	{
 		title: 'Deterministic by default',
@@ -16,7 +16,7 @@ const principles = [
 	},
 	{
 		title: 'AI, with bounded degrees of freedom',
-		body: 'AI writes code exactly where judgment is needed: domain logic declared in the spec as natural-language workflows. Everything around it is generated.',
+		body: 'AI writes code exactly where judgment is needed: logic declared in the spec as natural-language workflows. All the required plumbing is generated deterministically.',
 	},
 	{
 		title: 'Regenerate, don’t excavate',
@@ -57,7 +57,7 @@ const features = [
 
 <Layout
 	title="ArchAsCode — Architecture as the source of truth"
-	description="ArchAsCode compiles a schema-validated architecture.yml into a running application: deterministic code generation, with AI handling exactly the parts that need judgment."
+	description="ArchAsCode compiles a schema-validated architecture.yml into a running REST API application: deterministic code generation, augmented with AI handling exactly the parts that need judgment."
 >
 	<main class="relative">
 		<!-- Hero -->
@@ -68,17 +68,18 @@ const features = [
 						AI-native software engineering
 					</p>
 					<h1 class="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-						Architecture as the <span
+						Architecture <span
 							class="bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent"
-							>source of truth</span
+							>as Code</span
 						>
 					</h1>
 					<p class="mt-6 text-lg leading-relaxed text-zinc-400">
-						ArchAsCode compiles a schema-validated <code
+						ArchAsCode makes a schema-validated <code
 							class="rounded bg-white/5 px-1.5 py-0.5 font-mono text-base text-zinc-200"
 							>architecture.yml</code
-						> into a running application — deterministic code generation, with AI handling exactly
-						the parts that need judgment.
+						> the source of truth for your system — compiled into a running REST API application by
+						deterministic code generation, augmented with AI handling exactly the parts that need
+						judgment.
 					</p>
 					<div class="mt-8 flex flex-wrap gap-4">
 						<a
@@ -121,20 +122,47 @@ const features = [
 			</div>
 
 			<!-- Terminal strip -->
-			<div
-				class="mt-16 rounded-xl border border-white/10 bg-[#0d0d1a] p-5 font-mono text-sm leading-relaxed"
-			>
-				<p class="text-zinc-500"><span class="text-zinc-600">$</span> rm -rf src/</p>
-				<p class="text-zinc-300"><span class="text-zinc-600">$</span> archascode render spec/architecture.yml</p>
-				<p class="text-emerald-400">&#10003; application rebuilt from spec &mdash; same system, every time</p>
+			<div class="mt-16 rounded-xl border border-white/10 bg-[#0d0d1a]">
+				<div class="flex items-center gap-2 border-b border-white/5 px-4 py-3">
+					<span class="size-3 rounded-full bg-zinc-700"></span>
+					<span class="size-3 rounded-full bg-zinc-700"></span>
+					<span class="size-3 rounded-full bg-zinc-700"></span>
+					<span class="ml-3 font-mono text-xs text-zinc-500">Claude Code</span>
+				</div>
+				<div class="space-y-3 p-5 font-mono text-sm leading-relaxed">
+					<p class="text-zinc-300"><span class="text-rose-400">!</span> rm -rf src/</p>
+					<p><span class="text-zinc-600">&gt;</span> <span class="text-indigo-300">/aac-apply</span></p>
+					<div>
+						<p class="text-zinc-200">
+							<span class="text-emerald-400">&#9679;</span> archascode <span class="text-zinc-400">render</span>
+						</p>
+						<p class="pl-5 text-zinc-500">
+							&#9147;&nbsp; deterministic build from spec &mdash; 1 pending hand-off: Order.calculate_total
+						</p>
+					</div>
+					<div>
+						<p class="text-zinc-200">
+							<span class="text-emerald-400">&#9679;</span> Task<span class="text-zinc-400"
+								>(implement Order.calculate_total)</span
+							>
+						</p>
+						<p class="pl-5 text-zinc-500">&#9147;&nbsp; agent writes the workflow body</p>
+					</div>
+					<p class="text-emerald-400">&#10003; application rebuilt from spec &mdash; same system, every time</p>
+				</div>
 			</div>
+			<p class="mt-3 text-center text-xs text-zinc-600">
+				One skill closes the loop: a deterministic render, plus AI sub-agents for exactly the
+				declared hand-offs. <span class="font-mono">/src</span> becomes a disposable build artifact.
+			</p>
 		</section>
 
 		<!-- Problem -->
 		<section class="border-t border-white/5">
 			<div class="mx-auto max-w-6xl px-6 py-20">
-				<h2 class="max-w-2xl text-3xl font-bold tracking-tight text-white">
-					AI made coding fast. It didn&rsquo;t make systems dependable.
+				<p class="text-sm font-semibold tracking-widest text-indigo-400 uppercase">The challenges</p>
+				<h2 class="mt-3 max-w-3xl text-3xl font-bold tracking-tight text-white">
+					AI made coding fast, but it brought new challenges:
 				</h2>
 				<div class="mt-10 grid gap-8 sm:grid-cols-3">
 					{
@@ -153,8 +181,10 @@ const features = [
 		<section id="approach" class="scroll-mt-16 border-t border-white/5">
 			<div class="mx-auto max-w-6xl px-6 py-20">
 				<p class="text-sm font-semibold tracking-widest text-indigo-400 uppercase">The approach</p>
-				<h2 class="mt-3 max-w-2xl text-3xl font-bold tracking-tight text-white">
-					Give the deterministic parts to a generator. Give the judgment to AI.
+				<h2 class="mt-3 text-3xl font-bold tracking-tight text-white">
+					Give the deterministic parts to a generator. <span class="md:block"
+						>Give the judgment to AI.</span
+					>
 				</h2>
 				<div class="mt-10 grid gap-6 sm:grid-cols-2">
 					{
